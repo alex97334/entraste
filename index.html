@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Corazón con Foto y Mensaje</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-repeat: no-repeat;
+            background-size: cover;
+            overflow: hidden;
+            margin: 0;
+           background-color: rgb(75, 6, 17);
+        }
+        .musica{
+            position: absolute;
+            top: 85%;
+            left: 39%;
+            width: 1%;
+            height: 400px;
+            
+            
+        }
+
+        /* Corazón principal */
+        .heart {
+            position: relative;
+            width: 200px;
+            height: 200px;
+            background-color: red;
+            transform: rotate(-45deg);
+            margin-top: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .heart::before,
+        .heart::after {
+            content: '';
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            background-color: red;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+        }
+
+        .heart::before {
+            top: -100px;
+            left: 0;
+        }
+
+        .heart::after {
+            left: 100px;
+            top: 0;
+        }
+
+        /* Imagen dentro del corazón */
+        .heart img {
+            position: absolute;
+            top: 10%; /* Posición de la foto sobre el corazón */
+            left: 50%;
+            transform: translateX(-50%);
+            transform: rotate(25deg);
+            left: 12%;
+            width: 150px; /* Tamaño de la foto */
+            height: 150px;
+            border-radius: 50%; /* Foto circular */
+            overflow: hidden;
+            border: 3px solid white; /* Borde blanco */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* Sombra para la foto */
+            z-index: 2; /* Asegura que la foto esté sobre el corazón */
+        }
+        
+
+        /* Mensaje dentro del corazón */
+        .message {
+            
+            font-family: 'Arial', sans-serif;
+            
+            position: absolute;
+            bottom: 7px;
+            color: white;
+            font-size: 18px;
+            left: 18%;
+            font-weight: bold;
+            top: -5%;
+            transform: rotate(45deg);
+            z-index: 2;
+            text-shadow: 0 0 10px rgba(16, 6, 2, 0.8);
+        }
+
+        /* Corazones flotantes */
+        .floating-heart {
+            position: absolute;
+            color: red;
+            font-size: 24px;
+            animation: float 3s infinite;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+            50% {
+                transform: translateY(-100px);
+                opacity: 0.5;
+            }
+            100% {
+                transform: translateY(-200px);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="heart">
+        <img src="ros.gif" alt="Foto"> <!-- Cambia la URL de la imagen -->
+        <div class="message">🥰 My Love 💖</div>
+        
+    </div>
+    <div class="musica">
+        <audio controls src="entra.mp3"></audio>
+    </div>
+   
+    <!-- Corazones flotantes -->
+    <script>
+        function createFloatingHearts() {
+            for (let i = 0; i < 20; i++) {
+                let heart = document.createElement("div");
+                heart.innerHTML = "❤️";
+                heart.classList.add("floating-heart");
+                heart.style.left = Math.random() * window.innerWidth + "px";
+                heart.style.top = Math.random() * window.innerHeight + "px";
+                heart.style.animationDuration = (Math.random() * 2 + 2) + "s";
+                document.body.appendChild(heart);
+
+                setTimeout(() => heart.remove(), 3000);
+            }
+        }
+
+        setInterval(createFloatingHearts, 1000);
+    </script>
+ 
+</body>
+
+</html>
